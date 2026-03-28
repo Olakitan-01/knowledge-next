@@ -9,6 +9,7 @@ export default function HomePage() {
   const { posts, hasMore, fetchPosts, loadMore } = usePostsStore()
 
   useEffect(() => {
+    console.log('HOME PAGE LOADED')
     fetchPosts(1)
   }, [fetchPosts])
 
