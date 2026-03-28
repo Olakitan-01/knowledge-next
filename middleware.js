@@ -6,6 +6,12 @@ export function middleware(request) {
 
   const publicPaths = ['/login', '/signup']
   const isPublic = publicPaths.includes(path)
+  if (path === '/') {
+    if (!token) {
+        return NextResponse.redirect(new URL('/login', request.url))
+    }
+    return NextResponse.redirect(new URL('/home', request.url))
+}
 
   // Not logged in + trying to access protected page
   if (!token && !isPublic) {
